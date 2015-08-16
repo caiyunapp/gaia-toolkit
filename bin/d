@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -z "$GAIA_MODE" ]; then export GAIA_MODE="d"; fi
-
 . g
 
 VIRTUAL_ENV_DISABLE_PROMPT=true
+export GAIA_MODE="d"
 
 if [ -n "$_OLD_PS1" ] ; then
     subcall $@

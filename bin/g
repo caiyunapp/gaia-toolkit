@@ -36,7 +36,7 @@ set_ps () {
         if [ "x" != x ] ; then
             PS1="$PS1"
         else
-            PS1="\e[0;31m[$GAIA_MODE:$GAIA_ENV]\e[m$_OLD_PS1"
+            PS1="\e[0;31m[$GAIA_MODE:$PRJ_ENV]\e[m$_OLD_PS1"
         fi
         export PS1
     fi
