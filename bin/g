@@ -88,6 +88,7 @@ setup () {
     sudo pip install virtualenv sh pyCLI
     echo -e "${CLR_BOLD}Install python packages ...${CLR_GRN}Done${CLR_NOR}"
 
+    echo -e "${CLR_BOLD}Setup gaia ...${CLR_NOR}"
     mkdir -p ~/.gaia
     rm -rf ~/.gaia/*
     cd ~/.gaia
@@ -98,6 +99,7 @@ setup () {
     ln -s ~/.gaia/gaia-toolkit/bin/g .
     ln -s ~/.gaia/gaia-toolkit/bin/d .
     ln -s ~/.gaia/gaia-toolkit/bin/o .
+    echo -e "${CLR_BOLD}Setup gaia ...${CLR_GRN}Done${CLR_NOR}"
 }
 
 subcall () {
