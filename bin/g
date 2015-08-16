@@ -160,10 +160,15 @@ gaia_home
 path_vars
 
 if [ "$1" == "update" ] ; then
+    echo -e "${CLR_BOLD}Update gaia ...${CLR_NOR}"
     cd $GAIA_HOME/gaia-toolkit/; git pull;
     cd $ORG
+    echo -e "${CLR_BOLD}Update gaia ...${CLR_GRN}Done${CLR_NOR}"
 elif [ "$1" == "create" ] ; then
+    echo -e "${CLR_BOLD}Create project ...${CLR_NOR}"
     get_template $2
+    echo -e "${CLR_BOLD}Use repo = $REPO${CLR_NOR}"
     git clone $REPO $3
+    echo -e "${CLR_BOLD}Create project ...${CLR_GRN}Done${CLR_NOR}"
 fi
 
