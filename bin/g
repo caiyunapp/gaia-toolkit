@@ -97,7 +97,7 @@ setup () {
     mk_ubin
     cd ~/bin
     ln -s ~/.gaia/gaia-toolkit/bin/g .
-    ls    ln -s ~/.gaia/gaia-toolkit/bin/d .
+    ln -s ~/.gaia/gaia-toolkit/bin/d .
     ln -s ~/.gaia/gaia-toolkit/bin/o .
     echo -e "${CLR_BOLD}Setup gaia ...${CLR_GRN}Done${CLR_NOR}"
 }
