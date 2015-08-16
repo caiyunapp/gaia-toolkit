@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ -z "$GAIA_ROLE" ]; then export GAIA_ROLE="d"; fi
+
+ORG=`pwd`
+CUR="${BASH_SOURCE[0]}";
+if([ -h "${CUR}" ]) then
+  while([ -h "${CUR}" ]) do CUR=`readlink "${CUR}"`; done
+fi
+pushd . > /dev/null
+cd `dirname ${CUR}` > /dev/null
+CUR=`pwd`;
+popd  > /dev/null
+
+. g
+
+
+
