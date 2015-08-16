@@ -31,11 +31,12 @@ CLR_GRN="\x1b[32m" # GREEN text
 CLR_YLW="\x1b[33m" # YELLOW text
 
 set_ps () {
+    _OLD_PS1="$PS1"
     if [ -z "$GAIA_DISABLE_PROMPT" ] ; then
         if [ "x" != x ] ; then
             PS1="$PS1"
         else
-            PS1="\e[0;31m[$GAIA_MODE:$GAIA_ENV]\e[m"
+            PS1="\e[0;31m[$GAIA_MODE:$GAIA_ENV]\e[m$_OLD_PS1"
         fi
         export PS1
     fi

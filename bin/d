@@ -10,4 +10,5 @@ if [ -n "$_OLD_PS1" ] ; then
     subcall $@
 else
     hello
+    set_ps
 fi
