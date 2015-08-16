@@ -169,6 +169,7 @@ elif [ "$1" == "create" ] ; then
     get_template $2
     echo -e "${CLR_BOLD}Use repo = $REPO${CLR_NOR}"
     git clone $REPO $3
+    rm -rf $3/.git
     echo -e "${CLR_BOLD}Create project ...${CLR_GRN}Done${CLR_NOR}"
 fi
 
