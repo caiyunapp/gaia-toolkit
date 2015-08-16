@@ -76,9 +76,17 @@ mk_ubin () {
 }
 
 setup () {
+    echo -e "${CLR_BOLD}Install OS packages ...${CLR_NOR}"
     os_install git curl redis
+    echo -e "${CLR_BOLD}Install OS packages ...${CLR_GRN}Done${CLR_NOR}"
 
+    echo -e "${CLR_BOLD}Install pip ...${CLR_NOR}"
     curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python2.7
+    echo -e "${CLR_BOLD}Install pip ...${CLR_GRN}Done${CLR_NOR}"
+
+    echo -e "${CLR_BOLD}Install python packages ...${CLR_NOR}"
+    sudo pip install virtualenv sh pyCLI
+    echo -e "${CLR_BOLD}Install python packages ...${CLR_GRN}Done${CLR_NOR}"
 
     mkdir -p ~/.gaia
     rm -rf ~/.gaia/*
@@ -107,11 +115,6 @@ subcall () {
     fi
 }
 
-if [[ `hash d 2>/dev/null` || `hash o 2>/dev/null` ]]; then
-    continue
-else
-    setup
-fi
-
+command -v d >/dev/null 2>&1 || setup
 
 
