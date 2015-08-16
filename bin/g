@@ -63,10 +63,10 @@ mk_ubin () {
     mkdir -p ~/bin
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # We assume debian-like linux is used
-        `echo "export PATH=/Users/$USER/bin:\$PATH"` >> ~/.bashrc
+        `echo "export PATH=/home/$USER/bin:\$PATH"` >> ~/.bashrc
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX and we assume brew is installed
-        `echo "export PATH=/home/$USER/bin:\$PATH"` >> ~/.bashrc
+        `echo "export PATH=/Users/$USER/bin:\$PATH"` >> ~/.bashrc
     else
         # Unknown OS
         echo -e "${CLR_RED}Unknown OS!${CLR_NOR}"
@@ -97,9 +97,46 @@ setup () {
     mk_ubin
     cd ~/bin
     ln -s ~/.gaia/gaia-toolkit/bin/g .
-    ln -s ~/.gaia/gaia-toolkit/bin/d .
+    ls    ln -s ~/.gaia/gaia-toolkit/bin/d .
     ln -s ~/.gaia/gaia-toolkit/bin/o .
     echo -e "${CLR_BOLD}Setup gaia ...${CLR_GRN}Done${CLR_NOR}"
+}
+
+gaia_home () {
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # We assume debian-like linux is used
+        export GAIA_HOME=`echo "/home/$USER/.gaia"`
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX and we assume brew is installed
+        export GAIA_HOME=`echo "/Users/$USER/.gaia"`
+    else
+        # Unknown OS
+        export GAIA_HOME=`echo "/home/$USER/.gaia"`
+    fi
+}
+
+path_vars () {
+    ORG=`pwd`
+    CUR="${BASH_SOURCE[0]}";
+    if([ -h "${CUR}" ]) then
+      while([ -h "${CUR}" ]) do CUR=`readlink "${CUR}"`; done
+    fi
+    pushd . > /dev/null
+    cd `dirname ${CUR}` > /dev/null
+    CUR=`pwd`;
+    popd  > /dev/null
+}
+
+get_template () {
+    if [ "$1" == "backend" ] ; then
+        REPO=`echo "git@github.com:caiyunapp/gaia-template-backend.git"`
+    elif [ "$1" == "crawler" ] ; then
+        REPO=`echo "git@github.com:caiyunapp/gaia-template-crawler.git"`
+    elif [ "$1" == "ios" ] ; then
+        REPO=`echo "git@github.com:caiyunapp/gaia-template-ios.git"`
+    elif [ "$1" == "android" ] ; then
+        REPO=`echo "git@github.com:caiyunapp/gaia-template-android.git"`
+    fi
 }
 
 subcall () {
@@ -119,4 +156,14 @@ subcall () {
 
 command -v d >/dev/null 2>&1 || setup
 
+gaia_home
+path_vars
+
+if [ "$1" == "update" ] ; then
+    cd $GAIA_HOME/gaia-toolkit/; git pull;
+    cd $ORG
+elif [ "$1" == "create" ] ; then
+    get_template $2
+    git clone $REPO $3
+fi
 
