@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-if [ -z "$GAIA_ROLE" ]; then export GAIA_ROLE="d"; fi
+if [ -z "$GAIA_MODE" ]; then export GAIA_MODE="d"; fi
 
 . g
 
+VIRTUAL_ENV_DISABLE_PROMPT=true
 
-
+if [ -n "$_OLD_PS1" ] ; then
+    subcall $@
+else
+    hello
+fi

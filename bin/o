@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -z "$GAIA_ROLE" ]; then export GAIA_ROLE="o"; fi
+if [ -z "$GAIA_MODE" ]; then export GAIA_MODE="o"; fi
 
 . g
 
