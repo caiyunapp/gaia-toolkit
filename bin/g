@@ -214,17 +214,32 @@ command -v d >/dev/null 2>&1 || setup
 gaia_home
 path_vars
 
-if [ "$1" == "update" ] ; then
-    echo -e "${CLR_BOLD}Update gaia ...${CLR_NOR}"
-    cd $GAIA_HOME/gaia-toolkit/; git pull;
-    cd $ORG
-    echo -e "${CLR_BOLD}Update gaia ...${CLR_GRN}Done${CLR_NOR}"
-elif [ "$1" == "create" ] ; then
-    echo -e "${CLR_BOLD}Create project: ${CLR_YLW} $3 ${CLR_BOLD} ...${CLR_NOR}"
-    get_template $2
-    echo -e "${CLR_BOLD}Use repo = $REPO${CLR_NOR}"
-    git clone $REPO $3
-    rm -rf $3/.git
-    echo -e "${CLR_BOLD}Create project ...${CLR_GRN}Done${CLR_NOR}"
-fi
+main() {
+    if [ "$1" == "update" ] ; then
+        echo -e "${CLR_BOLD}Update gaia ...${CLR_NOR}"
+        cd $GAIA_HOME/gaia-toolkit/; git pull;
+        cd $ORG
+        echo -e "${CLR_BOLD}Update gaia ...${CLR_GRN}Done${CLR_NOR}"
+    elif [ "$1" == "create" ] ; then
+        echo -e "${CLR_BOLD}Create project: ${CLR_YLW} $3 ${CLR_BOLD} ...${CLR_NOR}"
+        get_template $2
+        echo -e "${CLR_BOLD}Use repo = $REPO${CLR_NOR}"
+        git clone $REPO $3
+        rm -rf $3/.git
+        echo -e "${CLR_BOLD}Create project ...${CLR_GRN}Done${CLR_NOR}"
+    elif [ "$1" == "env" ] ; then
+        echo -e "${CLR_BOLD}Project environment: ...${CLR_NOR}"
+        printenv
+    elif [ "$1" == "info" ] ; then
+        echo -e "${CLR_BOLD}Project information: ...${CLR_NOR}"
+    elif [ "$1" == "status" ] ; then
+        echo -e "${CLR_BOLD}Project status: ...${CLR_NOR}"
+    fi
+}
 
+_main() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "update create env info status" -- $cur) )
+}
+
+complete -F _main main
