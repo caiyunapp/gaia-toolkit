@@ -226,6 +226,10 @@ elif [ "$1" == "create" ] ; then
     git clone $REPO $3
     rm -rf $3/.git
     echo -e "${CLR_BOLD}Create project ...${CLR_GRN}Done${CLR_NOR}"
+elif [ "$1" == "clone" ] ; then
+    echo -e "${CLR_BOLD}Clone project: from ${CLR_YLW} $2 ${CLR_BOLD} ...${CLR_NOR}"
+    git clone $REPO $2
+    echo -e "${CLR_BOLD}Clone project ...${CLR_GRN}Done${CLR_NOR}"
 elif [ "$1" == "env" ] ; then
     echo -e "${CLR_BOLD}Project environment: ...${CLR_NOR}"
     printenv
