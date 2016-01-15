@@ -57,5 +57,5 @@ Check virtual enviroment
 """
 
 if not os.path.exists(".py"):
-    sys.argv = ['virtualenv', '.py']
+    sys.argv = ['virtualenv', '--system-site-packages', '.py']
     venv.main()
