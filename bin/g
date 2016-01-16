@@ -78,7 +78,7 @@ mk_ubin () {
 
 setup () {
     echo -e "${CLR_BOLD}Install OS packages ...${CLR_NOR}"
-    os_install git curl redis
+    os_install git curl
     echo -e "${CLR_BOLD}Install OS packages ...${CLR_GRN}Done${CLR_NOR}"
 
     echo -e "${CLR_BOLD}Install pip ...${CLR_NOR}"
@@ -86,7 +86,7 @@ setup () {
     echo -e "${CLR_BOLD}Install pip ...${CLR_GRN}Done${CLR_NOR}"
 
     echo -e "${CLR_BOLD}Install python packages ...${CLR_NOR}"
-    sudo pip install virtualenv sh pyCLI
+    sudo pip install virtualenv
     echo -e "${CLR_BOLD}Install python packages ...${CLR_GRN}Done${CLR_NOR}"
 
     echo -e "${CLR_BOLD}Setup gaia ...${CLR_NOR}"
