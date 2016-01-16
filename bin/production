@@ -3,8 +3,8 @@
 . g
 
 VIRTUAL_ENV_DISABLE_PROMPT=true
-export GAIA_MODE="o"
-export GAIA_MODE="prod"
+export GAIA_MODE="p"
+export PRJ_ENV="prod"
 
 if [ -n "$_OLD_PS1" ] ; then
     subcall $@
