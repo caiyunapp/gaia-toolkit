@@ -4,6 +4,7 @@
 
 VIRTUAL_ENV_DISABLE_PROMPT=true
 export GAIA_MODE="d"
+export PRJ_ENV="dev"
 
 if [ -n "$_OLD_PS1" ] ; then
     subcall $@
