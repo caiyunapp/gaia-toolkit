@@ -27,22 +27,22 @@ g create backend PROJECTNAME
 Enter the developing mode
 
 ```bash
-. d
+. develop
 ```
 
 Enter the staging mode
 
 ```bash
-. o staging
+. staging
 ```
 
 Enter the prod mode
 
 ```bash
-. o prod
+. production
 ```
 
-Quit the developing/staging/prod mode
+Quit the developing/staging/production mode
 
 ```bash
 quit
