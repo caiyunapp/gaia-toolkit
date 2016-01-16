@@ -18,8 +18,35 @@ Update toolkit
 g update
 ```
 
-create a backend project
+Create a backend project
 
 ```bash
 g create backend PROJECTNAME
 ```
+
+Enter the developing mode
+
+```bash
+. d
+```
+
+Enter the staging mode
+
+```bash
+. o staging
+```
+
+Enter the prod mode
+
+```bash
+. o prod
+```
+
+Quit the developing/staging/prod mode
+
+```bash
+quit
+```
+
+
+
