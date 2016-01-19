@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. g
+. $HOME/bin/g
 
 VIRTUAL_ENV_DISABLE_PROMPT=true
 export GAIA_MODE="d"
