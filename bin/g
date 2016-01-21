@@ -65,9 +65,11 @@ mk_ubin () {
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # We assume debian-like linux is used
         `echo "export PATH=$HOME/bin:\$PATH"` >> ~/.bashrc
+        `echo "export PATH=$HOME/bin:\$PATH"` >> ~/.bash_profile
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX and we assume brew is installed
         `echo "export PATH=$HOME/bin:\$PATH"` >> ~/.bashrc
+        `echo "export PATH=$HOME/bin:\$PATH"` >> ~/.bash_profile
     else
         # Unknown OS
         echo -e "${CLR_RED}Unknown OS!${CLR_NOR}"
