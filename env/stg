@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+. $HOME/bin/g
+
+VIRTUAL_ENV_DISABLE_PROMPT=true
+export GAIA_MODE="s"
+export PRJ_ENV="staging"
+
+if [ -n "$_OLD_PS1" ] ; then
+    subcall $@
+else
+    hello
+    set_ps
+fi
