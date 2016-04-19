@@ -177,7 +177,7 @@ hello () {
     fi
 
     echo -e "${CLR_YLW}Setting Pyhton path to user local......${CLR_NOR}${CLR_GRN}Done${CLR_NOR}"
-    export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PRJ_HOME/.py/lib/python2.7/site-packages/:$PRJ_HOME/lib/src:$PRJ_HOME/src:$PRJ_HOME/test
+    export PYTHONPATH=$PRJ_HOME/src:$PRJ_HOME/test:$PRJ_HOME/lib/src:$PRJ_HOME/.py/lib/python2.7/site-packages/:/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/lib/python2.7:/usr/local/lib/python2.7/site-packages
 
     if ($PY -c "import virtualenv as venv"); then
             echo -e "${CLR_YLW}Checking virtualenv......${CLR_NOR}${CLR_GRN}OK${CLR_NOR}"
